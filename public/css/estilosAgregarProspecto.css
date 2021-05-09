@@ -225,3 +225,10 @@ input.error.active::placeholder {
 .place::placeholder {
     color: red;
 }
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: rgb(0, 0, 0) !important;
+    background-image: none !important;
+    color: -internal-light-dark(rgb(185, 34, 34), rgb(231, 231, 231)) !important;
+}

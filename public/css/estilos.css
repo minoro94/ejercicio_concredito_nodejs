@@ -160,3 +160,10 @@ td {
 button:disabled {
     background: #e01313;
 }
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: rgb(18, 98, 238) !important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
+}
