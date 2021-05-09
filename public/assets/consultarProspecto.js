@@ -8,7 +8,7 @@ const divPadre = document.getElementById("divPadre");
 cargarProspectoporId = async(id) => {
     let url = (window.location.hostname.includes('localhost')) ?
         `http://localhost:8080/api/prospectos/${id}` :
-        `https://restserver-concredito.herokuapp.com/api/prospectos/id${id}`;
+        `https://restserver-concredito.herokuapp.com/api/prospectos/${id}`;
     const respuesta = await fetch(url, {
         method: 'GET',
         headers: {
