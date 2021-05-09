@@ -6,7 +6,7 @@ const path = require('path');
 const creadorId = require('../helpers/uuid-creador');
 let nameArchivo = [];
 const storage = multer.diskStorage({
-    destination: 'public/uploads',
+    destination: path.join(__dirname, '../public/uploads'),
     filename: (req, file, cb) => {
         let nombreArchivo = file.originalname.replace(/ /g, "_");
         const nombreArchivoId = new creadorId();
@@ -44,7 +44,7 @@ class Server {
     middlewares() {
         this.app.use(multer({
             storage,
-            dest: 'public/uploads',
+            dest: path.join(__dirname, 'public/uploads'),
             fileFilter: (req, file, cb) => {
                 const filetypes = /pdf/;
                 const mimetype = filetypes.test(file.mimetype);
