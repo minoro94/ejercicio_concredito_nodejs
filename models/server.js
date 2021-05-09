@@ -44,7 +44,7 @@ class Server {
     middlewares() {
         this.app.use(multer({
             storage,
-            dest: path.join(__dirname, 'public/uploads'),
+            dest: path.join(__dirname, '../public/uploads'),
             fileFilter: (req, file, cb) => {
                 const filetypes = /pdf/;
                 const mimetype = filetypes.test(file.mimetype);
