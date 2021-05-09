@@ -39,6 +39,9 @@ cargarProspectoporId = async(id) => {
             archivo.appendChild(elemento);
         }
         // formulario.estatusConsulta.value = `Estatus: ${dataConsulta.estatus}`;
+    } else {
+        alert(`EL id: ${id} no existe`);
+        window.location = `index.html`;
     }
 };
 
@@ -46,7 +49,7 @@ formulario.addEventListener('submit', async(e) => {
     if (evaluarProspecto(e)) {
         let url = (window.location.hostname.includes('localhost')) ?
             `http://localhost:8080/api/prospectos/${_id}` :
-            `https://restserver-concredito.herokuapp.com/`;
+            `https://restserver-concredito.herokuapp.com/api/prospectos/${id}`;
         const respuesta = await fetch(url, {
             method: 'PUT',
             headers: {
