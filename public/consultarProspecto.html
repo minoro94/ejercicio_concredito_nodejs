@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Consultar Prospecto</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilosAgregarProspecto.css">
+</head>
+
+<body>
+    <div class="main-block">
+        <h1 class="titulo">Consultar Prospecto</h1>
+        <form action="/" id="formulario" class="formulario">
+            <div class="info" id="divPadre">
+                <input class="error" type="text" name="nombreConsulta" disabled>
+                <input class="error" type="text" name="calleConsulta" disabled>
+                <input class="error" type="text" name="primerapellidoConsulta" disabled>
+                <input class="error" type="text" name="numeroConsulta" disabled>
+                <input class="error" type="text" name="segundoapellidoConsulta" disabled>
+                <input class="error" type="text" name="coloniaConsulta" disabled>
+                <input class="error" type="text" name="telefonoConsulta" disabled>
+                <input class="error" type="text" name="codigopostalConsulta" disabled>
+                <input class="error" type="text" name="rfcConsulta" disabled>
+                <input class="error" type="text" name="estatusConsulta" disabled>
+                <select name="estatus" id="archivo" class="error">
+                    <option value="Seleccione un Archivo">Seleccione un Archivo</option>
+                </select>
+                <input class="error campo" type="text" name="observacionesConsulta" id="observaciones" disabled>
+                <input class="abrirArchivo" type="button" value="Abrir Archivo" onclick="abrirArchivo()">
+            </div>
+            <button style="display: inline-block;" class="btnRegresar" type="button" onclick="location.href='index.html'">Regresar</button>
+        </form>
+    </div>
+    <script src="assets/consultarProspecto.js">
+    </script>
+</body>

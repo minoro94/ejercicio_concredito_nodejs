@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Evaluar Prospecto</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilosAgregarProspecto.css">
+</head>
+
+<body>
+    <div class="main-block">
+        <h1 class="titulo">Evaluar Prospecto</h1>
+        <form action="/" id="formulario" class="formulario">
+            <div class="info" id="info">
+                <input class="" type="text" name="nombreConsulta" disabled>
+                <input class="" type="text" name="calleConsulta" disabled>
+                <input class="" type="text" name="primerapellidoConsulta" disabled>
+                <input class="" type="text" name="numeroConsulta" disabled>
+                <input class="" type="text" name="segundoapellidoConsulta" disabled>
+                <input class="" type="text" name="coloniaConsulta" disabled>
+                <input class="" type="text" name="telefonoConsulta" disabled>
+                <input class="" type="text" name="codigopostalConsulta" disabled>
+                <input class="" type="text" name="rfcConsulta" disabled>
+                <select name="estatus" id="estatus" class="error" onchange="opcion()">
+                    <option value="AUTORIZADO">Autorizado</option>
+                    <option value="RECHAZADO">Rechazado</option>
+                </select>
+            </div>
+            <select name="estatus" id="archivo" class="error">
+                <option value="Seleccione un Archivo">Seleccione un Archivo</option>
+            </select>
+            <input class="abrirArchivo" type="button" value="Abrir Archivo" onclick="abrirArchivo()">
+            <button style="display: inline-block;" class="btnRegresar" type="button" onclick="location.href='index.html'">Regresar</button>
+            <button style="display: inline-block;" type="submit" class="button">Evaluar</button>
+        </form>
+        <div class="error_box" id="error_box">
+            <p>Se ha producido un error.</p>
+        </div>
+    </div>
+    <script src="assets/evaluarProspecto.js">
+    </script>
+</body>

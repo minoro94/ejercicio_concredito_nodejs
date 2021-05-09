@@ -3,13 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Con credito</title>
+    <title>conCredito</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-    <h1>Con Credito</h1>
+    <div class="contenedor">
+        <header>
+            <h1>Lista de Prospectos</h1>
+            <div>
+                <!-- <button id="btn_cargar_usuarios" class="btn active" onclick="cargarProspectos()">Cargar Prospectos</button> -->
+                <button id="btn_agregar_usuarios" class="agregar active" onclick="location.href='agregarProspecto.html'">Agregar Prospectos</button>
+            </div>
+        </header>
+        <main>
+            <div class="error_box" id="error_box">
+                <p>Se ha producido un error.</p>
+            </div>
+            <table id="tabla" class="tabla">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Estatus</th>
+                    <th>Consultar</th>
+                    <th>Evaluar</th>
+                </tr>
+            </table>
+            <div class="loader" id="loader"></div>
+            <div class="registros" id="registros">
+                <h1>Aun no hay registros</h1>
+            </div>
+        </main>
+    </div>
+    <script src="assets/index.js"></script>
 </body>
 
 </html>
