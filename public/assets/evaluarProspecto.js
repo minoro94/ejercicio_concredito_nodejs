@@ -10,9 +10,7 @@ let prospecto_observaciones,
     prospecto_estatus;
 
 cargarProspectoporId = async(id) => {
-    let url = (window.location.hostname.includes('localhost')) ?
-        `http://localhost:8080/api/prospectos/${id}` :
-        `https://restserver-concredito.herokuapp.com/api/prospectos/${id}`;
+    let url = `http://localhost:8080/api/prospectos/${id}`;
     const respuesta = await fetch(url, {
         method: 'GET',
         headers: {
@@ -38,7 +36,6 @@ cargarProspectoporId = async(id) => {
             elemento.textContent = cadenaSeparada[1];
             archivo.appendChild(elemento);
         }
-        // formulario.estatusConsulta.value = `Estatus: ${dataConsulta.estatus}`;
     } else {
         alert(`EL id: ${id} no existe`);
         window.location = `index.html`;
@@ -47,10 +44,8 @@ cargarProspectoporId = async(id) => {
 
 formulario.addEventListener('submit', async(e) => {
     if (evaluarProspecto(e)) {
-        let url = (window.location.hostname.includes('localhost')) ?
-            `http://localhost:8080/api/prospectos/${_id}` :
-            `https://restserver-concredito.herokuapp.com/api/prospectos/${id}`;
-        const respuesta = await fetch(url, {
+        let url = `http://localhost:8080/api/prospectos/${_id}`;
+        await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +105,9 @@ validarFormulario = () => {
 
     return true;
 };
-window.onload = cargarProspectoporId(_id);
+// window.onload = cargarProspectoporId(_id);
+window.onbeforeunload = cargarProspectoporId(_id);
+
 
 opcion = () => {
     if (seleccion.options[seleccion.selectedIndex].text == 'Rechazado') {

@@ -3,14 +3,13 @@ const express = require('express');
 const { dbConection } = require('../db/config.db');
 const multer = require('multer');
 const path = require('path');
-const creadorId = require('../helpers/uuid-creador');
+const { v4: uuid } = require('uuid');
 let nameArchivo = [];
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../public/uploads'),
     filename: (req, file, cb) => {
         let nombreArchivo = file.originalname.replace(/ /g, "_");
-        const nombreArchivoId = new creadorId();
-        nombreArchivo = `${nombreArchivoId.id}¿${nombreArchivo}`;
+        nombreArchivo = `${uuid()}¿${nombreArchivo}`;
         nameArchivo.push(nombreArchivo);
         cb(null, nombreArchivo);
     }
@@ -34,31 +33,29 @@ class Server {
         this.routes();
     }
 
-
+    // Metodo de conexion a la DB Mongoose
     async conectarDB() {
         await dbConection();
     }
 
-
-
     middlewares() {
-        this.app.use(multer({
-            storage,
-            dest: path.join(__dirname, '../public/uploads'),
-            fileFilter: (req, file, cb) => {
-                const filetypes = /pdf/;
-                const mimetype = filetypes.test(file.mimetype);
-                const extname = filetypes.test(path.extname(file.originalname));
-                if (mimetype && extname) {
-                    return cb(null, true);
+            this.app.use(multer({
+                storage,
+                dest: path.join(__dirname, '../public/uploads'),
+                fileFilter: (req, file, cb) => {
+                    const filetypes = /pdf/;
+                    const mimetype = filetypes.test(file.mimetype);
+                    const extname = filetypes.test(path.extname(file.originalname));
+                    if (mimetype && extname) {
+                        return cb(null, true);
+                    }
+                    cb("Error el archivo debe ser un PDF, DOC o DOCX valido");
                 }
-                cb("Error el archivo debe ser un PDF valido");
-            }
-        }).array('file'));
-        this.app.use(cors());
-        this.app.use(express.static('public'));
-    }
-
+            }).array('file'));
+            this.app.use(cors());
+            this.app.use(express.static('public'));
+        }
+        // Metodo para obtener el nombre de los file y procesarlos al body.
     obtenerNombreArchivos(ArregloArchivos = []) {
         ArregloArchivos = nameArchivo;
         nameArchivo = [];

@@ -1,9 +1,7 @@
 const btnEnviar = document.getElementById('agregarProspecto');
 const error_box = document.getElementById("error_box");
 const error = document.getElementsByClassName("error");
-let url = (window.location.hostname.includes('localhost')) ?
-    'http://localhost:8080/api/prospectos' :
-    'https://restserver-concredito.herokuapp.com/api/prospectos';
+let url = 'http://localhost:8080/api/prospectos';
 let prospecto_nombre,
     prospecto_primerapellido,
     prospecto_segundoapellido,
@@ -16,10 +14,12 @@ let prospecto_nombre,
     fileField,
     nombreArchivos = {},
     nombreArchivo;
+
 formulario.addEventListener('submit', async(e) => {
     if (agregarProspecto(e)) {
         let formData = new FormData();
         for (const file of fileField.files) {
+            console.log(file);
             formData.append("file", file);
             nombreArchivo = file.name.replace(/ /g, "_");
             formData.append("archivos", nombreArchivo);
@@ -35,7 +35,7 @@ formulario.addEventListener('submit', async(e) => {
         formData.append("telefono", prospecto_telefono);
         formData.append("rfc", prospecto_rfc);
 
-        const respuesta = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             body: formData,
             cache: 'no-cache'
@@ -61,9 +61,9 @@ function agregarProspecto(e) {
     prospecto_telefono = parseInt(formulario.telefono.value.trim());
     prospecto_rfc = formulario.rfc.value.trim();
     prospecto_calle = formulario.calle.value.trim();
-    prospecto_numero = parseInt(formulario.numero.value.trim());
+    prospecto_numero = formulario.numero.value.trim();
     prospecto_colonia = formulario.colonia.value.trim();
-    prospecto_codigopostal = formulario.codigopostal.value;
+    prospecto_codigopostal = parseInt(formulario.codigopostal.value.trim());
     fileField = document.getElementById("inpFile");
     if (validarFormulario()) {
         error_box.classList.remove('active');
@@ -83,7 +83,7 @@ function agregarProspecto(e) {
 
 validarFormulario = () => {
     if (prospecto_nombre == '' || prospecto_primerapellido == '' || isNaN(prospecto_telefono) || prospecto_rfc == '' ||
-        prospecto_calle == '' || isNaN(prospecto_numero) || prospecto_colonia == '' || isNaN(prospecto_codigopostal) || formulario.file.value == '') {
+        prospecto_calle == '' || prospecto_numero == '' || prospecto_colonia == '' || isNaN(prospecto_codigopostal) || formulario.file.value == '') {
         return false;
     }
 

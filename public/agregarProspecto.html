@@ -13,18 +13,18 @@
         <h1 class="titulo">Agregar Prospecto</h1>
         <form action="/" id="formulario" class="formulario" enctype="multipart/form-data">
             <div class="info">
-                <input tabindex="1" class="error" type="text" name="nombre" placeholder="Nombre">
-                <input tabindex="6" class="error" type="text" name="calle" placeholder="Calle">
-                <input tabindex="2" class="error" type="text" name="primerapellido" placeholder="Primer Apellido">
-                <input tabindex="7" class="error" type="number" name="numero" placeholder="Numero">
-                <input tabindex="3" class="error" type="text" name="segundoapellido" placeholder="Segundo Apellido">
-                <input tabindex="8" class="error" type="text" name="colonia" placeholder="Colonia">
-                <input tabindex="4" class="error" type="tel" name="telefono" placeholder="Telefono">
-                <input tabindex="9" class="error" type="text" name="codigopostal" placeholder="Codigo Postal">
-                <input tabindex="5" class="error" type="text" name="rfc" placeholder="RFC">
+                <input tabindex="1" class="error" type="text" name="nombre" placeholder="Nombre" maxlength="65">
+                <input tabindex="6" class="error" type="text" name="calle" placeholder="Calle" maxlength="65">
+                <input tabindex="2" class="error" type="text" name="primerapellido" placeholder="Primer Apellido" maxlength="65">
+                <input tabindex="7" class="error" type="text" name="numero" placeholder="Numero" maxlength="10">
+                <input tabindex="3" class="error" type="text" name="segundoapellido" placeholder="Segundo Apellido" maxlength="65">
+                <input tabindex="8" class="error" type="text" name="colonia" placeholder="Colonia" maxlength="65">
+                <input tabindex="4" class="error" type="tel" name="telefono" placeholder="Telefono" maxlength="10">
+                <input tabindex="9" class="error" type="text" name="codigopostal" placeholder="Codigo Postal" maxlength="5">
+                <input tabindex="5" class="error" type="text" name="rfc" placeholder="RFC" maxlength="13">
                 <input tabindex="10" placeholder="" class="error" type="file" name="file" id="inpFile" required onchange="validarExtension()" accept=".pdf" multiple>
             </div>
-            <button style="display: inline-block;" class="btnRegresar" type="button" onclick="location.href='index.html'">Regresar</button>
+            <button style="display: inline-block;" class="btnRegresar" type="button" onclick="window.location='index.html'">Regresar</button>
             <button style="display: inline-block;" type="submit" class="button">Enviar</button>
         </form>
         <div class="error_box" id="error_box">

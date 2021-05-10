@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-
+// Modelo para la DB de mongoose
 const ProspectoSchema = Schema({
     nombre: {
         type: String,
