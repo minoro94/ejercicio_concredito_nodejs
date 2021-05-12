@@ -26,8 +26,9 @@ const prospectoGetbyId = async(req = request, res = response) => {
 const prospectosPost = async(req = request, res = response) => {
     const nombreA = new Server();
     const archivosName = nombreA.obtenerNombreArchivos();
+    console.log(archivosName);
     for (let i = 0; i < archivosName.length; i++) {
-        req.body.archivos[i] = archivosName[i];
+        req.body.archivos = archivosName[i];
     }
     const prospecto = new Prospecto(req.body);
     await prospecto.save();
